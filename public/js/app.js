@@ -11,6 +11,7 @@ weatherForm.addEventListener('submit' ,(e) =>{
     
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
+    document.getElementById("weather-pic").src=''
 
     fetch('/weather?address='+location).then((response)=>{
         response.json().then( (data) =>{
@@ -20,7 +21,10 @@ weatherForm.addEventListener('submit' ,(e) =>{
             }else{
                 
                 messageOne.textContent = data.location
-                messageTwo.textContent = data.forecast
+                
+                const imageUrl =  data.forecast.split('##@@##')[0];
+                document.getElementById("weather-pic").src=imageUrl;
+                messageTwo.textContent = data.forecast.split('##@@##')[1];
                 
             }
             

@@ -10,9 +10,11 @@ const forecast = (latitiude,longtitude,callback) =>{
         }
         else{
             callback(undefined,(
+                body.current.weather_icons[0] +'##@@##'+
                 body.current.weather_descriptions[0] +' throughout the day. It is currently '+
                 body.current.temperature + ' degree out there. It feels like '+
-                body.current.feelslike+' degree'    
+                body.current.feelslike+' degree. ' + 'Wind is blowing at a speed of '+
+                body.current.wind_speed+' km/hr.'   
             ))
         }
     }) 
